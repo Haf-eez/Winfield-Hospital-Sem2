@@ -1,4 +1,4 @@
-// On checkout.html page, retrieve the cart data from localStorage
+// Retrieve Cart
 let cartData = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Function to display the cart data
@@ -8,7 +8,6 @@ function displayCart() {
     // Clear the existing content
     cartContainer.innerHTML = '';
 
-    // Loop through the cart data and create table rows
     cartData.forEach(item => {
         const row = document.createElement('tr');
 
@@ -25,28 +24,25 @@ function displayCart() {
     updateCartTotal();
 }
 
-// Function to calculate the total price of the cart
+// Total cart price
 function updateCartTotal() {
     let total = 0;
     cartData.forEach(item => {
         total += item.quantity * item.price;
     });
 
-    // Update the paragraph with the total
     const totalAmountParagraph = document.getElementById("totalAmount");
     totalAmountParagraph.textContent = `Total: Rs. ${total.toFixed(2)}`;
 
-    // Update the "ITEMS TOTAL" in Billing Summary
     const itemsTotalElement = document.getElementById("items-total");
     if (itemsTotalElement) {
         itemsTotalElement.textContent = `Rs. ${total.toFixed(2)}`;
     }
 
-    // Update order total including shipping
     updateOrderTotal(total);
 }
 
-// Function to update the order total including shipping
+// Function to update the order total 
 function updateOrderTotal(itemsTotal) {
     const shippingElement = document.getElementById("shipping-cost");
     const totalForOrderElement = document.getElementById("total-for-order");
@@ -56,9 +52,9 @@ function updateOrderTotal(itemsTotal) {
 
     if (selectedShipping) {
         if (selectedShipping.value === "option2") {
-            shippingCost = 250; // Delivery shipping cost
+            shippingCost = 250; 
         } else if (selectedShipping.value === "option3") {
-            shippingCost = 600; // Express delivery shipping cost
+            shippingCost = 600; 
         }
     }
 
@@ -77,27 +73,26 @@ document.addEventListener("DOMContentLoaded", function () {
     displayCart();
 });
 
-// Hiding the content from delivery
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Get all radio buttons and content divs for delivery methods
+    
     const deliveryRadioButtons = document.querySelectorAll('input[name="choice"]');
     const deliveryContent1 = document.getElementById("content1");
     const deliveryContent2 = document.getElementById("content2");
     const deliveryContent3 = document.getElementById("content3");
 
-    // Function to hide all delivery content divs
     function hideAllDeliveryContent() {
         deliveryContent1.classList.add("hidden");
         deliveryContent2.classList.add("hidden");
         deliveryContent3.classList.add("hidden");
     }
 
-    // Event listener for delivery radio button changes
+
     deliveryRadioButtons.forEach((radio) => {
         radio.addEventListener("change", function () {
-            hideAllDeliveryContent(); // Hide all delivery content first
+            hideAllDeliveryContent(); 
 
-            // Show the appropriate delivery content based on selected option
+      
             if (this.value === "option1") {
                 deliveryContent1.classList.remove("hidden");
             } else if (this.value === "option2") {
@@ -106,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 deliveryContent3.classList.remove("hidden");
             }
 
-            // Update order total if shipping method changes
             let itemsTotal = 0;
             cartData.forEach(item => {
                 itemsTotal += item.quantity * item.price;
@@ -115,48 +109,47 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Initialize delivery method: Hide all on page load
+    
     hideAllDeliveryContent();
 });
 
-// Payment method toggling
+// Payment method 
 document.addEventListener("DOMContentLoaded", function () {
-    // Get all payment radio buttons
+
     const paymentRadioButtons = document.querySelectorAll('input[name="payment"]');
 
-    // Selectors for payment detail sections
+
     const cardDetails = document.querySelectorAll(".form-group, .form-row"); 
     const depositDetails = document.getElementById("Deposit");
     const payLocationDetails = document.getElementById("paylocation"); 
 
-    // Function to hide all payment details
+
     function hideAllPaymentDetails() {
-        // Hide all card details fields (Visa-related fields)
+        // Hide card detail
         cardDetails.forEach(element => (element.style.display = "none"));
         depositDetails.style.display = "none"; 
         payLocationDetails.style.display = "none"; 
     }
 
-    // Function to show the correct payment details
     function togglePaymentDetails() {
         hideAllPaymentDetails(); 
 
         const selectedPayment = document.querySelector('input[name="payment"]:checked'); 
         if (selectedPayment) {
             if (selectedPayment.value === "visa") {
-                // Show all Visa-related fields (card number, expiry date, CVV)
+               
                 cardDetails.forEach(element => (element.style.display = "block"));
             } else if (selectedPayment.value === "paypal") {
-                // Show Deposit details
+    
                 depositDetails.style.display = "block";
             } else if (selectedPayment.value === "amex") {
-                // Show Pay at Location details
+     
                 payLocationDetails.style.display = "block";
             }
         }
     }
 
-    // Add event listeners to payment radio buttons
+ 
     paymentRadioButtons.forEach(button => {
         button.addEventListener("change", togglePaymentDetails);
     });
@@ -172,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     confirmButton.addEventListener("click", function (event) {
         event.preventDefault(); 
 
-        // Retrieve form inputs
+
         const firstName = document.getElementById("firstName");
         const lastName = document.getElementById("lastName");
         const email = document.getElementById("email");
@@ -194,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         resetErrorStyles();
 
-        // Validate required fields and apply error styles
+        // Validate required fields 
         if (!validateTextField(firstName.value)) {
             isValid = false;
             showError(firstName);
@@ -285,11 +278,10 @@ function resetErrorStyles() {
     });
 }
 
-// Show error styling and message
+
 function showError(field) {
     field.style.borderColor = "red"; 
 
-    // Optionally, add an error message next to the field
     let errorMessage = field.parentElement.querySelector(".error-message");
     if (!errorMessage) {
         errorMessage = document.createElement("span");
