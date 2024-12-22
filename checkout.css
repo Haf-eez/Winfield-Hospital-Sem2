@@ -3,7 +3,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: "IBM Plex Mono", monospace;
-    background-color: #f9f9f9; /* Light background for contrast */
+    background-color: #f9f9f9; 
 }
 
 /* Logo and Header Styling */
@@ -15,7 +15,7 @@ body, html {
 }
 
 .logo {
-    border-bottom: 2px solid #ccc; /* Light gray bottom border */
+    border-bottom: 2px solid #ccc; 
     height: 80px;
     display: flex;
     justify-content: left;
@@ -24,7 +24,7 @@ body, html {
 
 .topic {
     text-align: center;
-    background-color: rgba(145, 170, 224, 0.8); /* Subtle background */
+    background-color: rgba(145, 170, 224, 0.8); 
     color: #fff;
     font-weight: bold;
     letter-spacing: 2px;
@@ -127,18 +127,18 @@ table {
 
 th {
     font-weight: bold;
-    border-bottom: 2px solid #ccc; /* Bold header border */
+    border-bottom: 2px solid #ccc; 
     padding: 1rem;
     text-transform: uppercase;
 }
 
 td {
     padding: 1rem;
-    border-bottom: none; /* Subtle row borders */
+    border-bottom: none;
     vertical-align: middle;
 }
 
-/* Product Image in Table */
+
 .product-image {
     width: 80px;
     height: 80px;
@@ -174,7 +174,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: "IBM Plex Mono", monospace;
-    background-color: #fff; /* No container effect */
+    background-color: #fff; 
 }
 
 /* Form Title */
@@ -190,7 +190,7 @@ body, html {
 
 /* Form Styling */
 .form-container form {
-    margin-left: 170px; /* Aligns form fields to the left like the image */
+    margin-left: 170px; 
     width: 38%;
 }
 
@@ -207,7 +207,7 @@ body, html {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
-    box-sizing: border-box; /* Prevents overflow */
+    box-sizing: border-box; 
 }
 
 .form-container input:focus, select:focus {
@@ -230,7 +230,7 @@ body, html {
 
 /* hidding the content */
 .hidden {
-    display: none; /* Hides content initially */
+    display: none; 
 }
 
 .Ship-form-container {
@@ -301,7 +301,7 @@ label {
 }
 
 
-/* Custom Input and Select */
+
 .custom-input, .custom-select {
     width: 100%;
     padding: 8px;
@@ -421,7 +421,6 @@ label {
 
 /* Media queries */
 
-/* Mobile View Media Query */
 @media (max-width: 600px) {
 
     /* General Reset */
